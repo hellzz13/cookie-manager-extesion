@@ -1,13 +1,17 @@
 {
     "manifest_version": 2,
     "version": "0.0.1",
-    "name": "Hello World",
-    "description": "Extensão Hello World",
+    "name": "Cookie Manager",
+    "description": "Extensão Cookie Manager",
     "author": "Hélio Palença Neto",
-    "permissions": ["cookies", "http://*/*", "https://*/*"],
+    "permissions": [
+        "cookies",
+        "http://*/*",
+        "https://*/*"
+    ],
     "browser_action": {
-   	 "default_title": "Hello World",
-   	 "default_popup": "popup.html",
-   	 "default_icon": "favicon.png"
+        "default_title": "Cookie Manager",
+        "default_popup": "popup.html",
+        "default_icon": "favicon.png"
     }
 }
