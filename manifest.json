@@ -6,6 +6,8 @@
     "author": "Hélio Palença Neto",
     "permissions": [
         "cookies",
+        "tabs",
+        "scripting",
         "http://*/*",
         "https://*/*"
     ],

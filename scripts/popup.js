@@ -1,21 +1,25 @@
 
-var button = document.getElementById("getCookiesButton");
+const button = document.getElementById("getCookiesButton");
 button.addEventListener('click', function() {
-  let cookieName = document.getElementById('cookieNameInput').value;
+  const cookieName = document.getElementById('cookieNameInput').value;
 
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+  console.log(cookieName)
+
+  chrome.tabs.query({}, function(tabs) {
     // Obtém os cookies da guia ativa
-    chrome.cookies.getAll({ url: tabs[0].url }, function(cookies) {
-      // fazer aparecer no HTML
-      var cookieList = document.createElement('ul');
-      cookies.forEach(function(cookie) {
-      if(cookieName !== cookie.name) return
-        var listItem = document.createElement('li');
-        listItem.textContent = cookie.name + ': ' + cookie.value;
-        cookieList.appendChild(listItem);
-      });
-      
-      document.body.appendChild(cookieList);
-    });
+    tabs.map(({url}) => chrome.cookies.getAll({ url: url }, function(cookies) {
+        const cookieList = document.createElement('ul');
+        cookies.forEach(function(cookie) {
+        if(cookieName !== cookie.name) return
+          const listItem = document.createElement('li');
+          listItem.textContent = cookie.name + ': ' + cookie.value;
+          cookieList.appendChild(listItem);
+  
+        });
+        document.body.appendChild(cookieList);
+        chrome.cookies.set({url:"http://localhost:3000/",path:"/", name: "TudoAzul2" ,value: "hsiauhas", domain:"localhost", expirationDate: new Date().getDate() + 365 }, (value)=> console.log(value))
+      })
+      )
   });
 });
+
